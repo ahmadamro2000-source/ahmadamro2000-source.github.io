@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sustainable Design Engineering undergraduate building innovative, human-centered engineering solutions." />
+  <title>Ahmed — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue-50: #E6F1FB;
+      --blue-100: #B5D4F4;
+      --blue-200: #85B7EB;
+      --blue-400: #378ADD;
+      --blue-600: #185FA5;
+      --blue-800: #0C447C;
+      --blue-900: #042C53;
+      --bg: #0a0d12;
+      --bg2: #111620;
+      --bg3: #181e2a;
+      --text: #eef2f8;
+      --text2: #8a9ab5;
+      --text3: #4a5568;
+      --border: rgba(55,138,221,0.15);
+      --border2: rgba(55,138,221,0.3);
+      --accent: #378ADD;
+      --accent2: #185FA5;
+      --radius: 12px;
+      --radius-sm: 8px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 16px;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.1rem 3rem;
+      background: rgba(10,13,18,0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text2);
+      font-size: 0.875rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      flex-direction: column;
+      gap: 5px;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--text2);
+      transition: all 0.3s;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 60px; left: 0; right: 0;
+      background: var(--bg2);
+      border-bottom: 0.5px solid var(--border);
+      padding: 1.5rem 2rem;
+      z-index: 99;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      text-decoration: none;
+      color: var(--text2);
+      font-size: 1rem;
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--text); }
+
+    /* ── SECTIONS ── */
+    section { padding: 6rem 0; }
+    .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .section-label::after {
+      content: '';
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      opacity: 0.5;
+    }
+
+    /* ── HERO ── */
+    #home {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-grid-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(55,138,221,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(55,138,221,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+
+    .hero-glow {
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(55,138,221,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-content { position: relative; z-index: 1; }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(55,138,221,0.1);
+      border: 0.5px solid var(--border2);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 0.8rem;
+      color: var(--blue-200);
+      margin-bottom: 2rem;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .hero-tag::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 800;
+      line-height: 1.0;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.6s 0.1s ease both;
+    }
+
+    h1 .accent-name { color: var(--accent); }
+
+    .hero-desc {
+      font-size: 1.125rem;
+      color: var(--text2);
+      max-width: 560px;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+      animation: fadeUp 0.6s 0.2s ease both;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      animation: fadeUp 0.6s 0.3s ease both;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 0.75rem 1.75rem;
+      border-radius: var(--radius-sm);
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: var(--blue-600); transform: translateY(-1px); }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--text2);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 400;
+      padding: 0.75rem 1.75rem;
+      border: 0.5px solid var(--border2);
+      border-radius: var(--radius-sm);
+      transition: color 0.2s, border-color 0.2s, transform 0.15s;
+    }
+    .btn-ghost:hover { color: var(--text); border-color: var(--accent); transform: translateY(-1px); }
+
+    /* skills ticker */
+    .skills-ticker {
+      margin-top: 4rem;
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      animation: fadeUp 0.6s 0.4s ease both;
+    }
+    .skill-pill {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--text2);
+      background: var(--bg3);
+      border: 0.5px solid var(--border);
+      border-radius: 100px;
+      padding: 5px 14px;
+    }
+
+    /* ── PROJECTS ── */
+    #projects { background: var(--bg2); }
+
+    .projects-intro {
+      font-size: 1rem;
+      color: var(--text2);
+      margin-top: 0.5rem;
+      margin-bottom: 3rem;
+      max-width: 520px;
+    }
+
+    h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .project-card {
+      background: var(--bg3);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      cursor: pointer;
+      transition: border-color 0.25s, transform 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s;
+    }
+    .project-card:hover { border-color: var(--border2); transform: translateY(-3px); }
+    .project-card:hover::before { transform: scaleX(1); }
+
+    .project-number {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+    }
+
+    .project-icon {
+      width: 48px; height: 48px;
+      background: rgba(55,138,221,0.1);
+      border: 0.5px solid var(--border2);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .project-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+    }
+
+    .project-desc {
+      font-size: 0.9rem;
+      color: var(--text2);
+      margin-bottom: 1.5rem;
+      line-height: 1.65;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .project-tag {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      color: var(--blue-200);
+      background: rgba(55,138,221,0.08);
+      border: 0.5px solid rgba(55,138,221,0.2);
+      border-radius: 100px;
+      padding: 3px 10px;
+    }
+
+    /* ── EXPERIENCE ── */
+    #experience { background: var(--bg); }
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 3rem;
+    }
+
+    .exp-block h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .info-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+    .info-list li { font-size: 0.9rem; color: var(--text2); display: flex; align-items: flex-start; gap: 0.6rem; }
+    .info-list li::before { content: '—'; color: var(--accent); flex-shrink: 0; opacity: 0.6; }
+
+    .edu-item {
+      padding: 1.25rem 0;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .edu-item:last-child { border-bottom: none; }
+    .edu-item strong { font-weight: 500; color: var(--text); font-size: 0.95rem; display: block; margin-bottom: 0.25rem; }
+    .edu-item span { font-size: 0.85rem; color: var(--text2); }
+
+    .tech-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tech-tag {
+      font-size: 0.8rem;
+      color: var(--text2);
+      background: var(--bg3);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 4px 10px;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--bg2);
+      text-align: center;
+    }
+
+    .contact-sub {
+      font-size: 1.05rem;
+      color: var(--text2);
+      max-width: 480px;
+      margin: 1.25rem auto 2.5rem;
+      font-weight: 300;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 0.5px solid var(--border);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.8rem;
+      color: var(--text3);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      section { padding: 4rem 0; }
+      .experience-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .projects-grid { grid-template-columns: 1fr; }
+      h1 { font-size: 2.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#home" class="nav-logo">A.M</a>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#home" onclick="closeMenu()">Home</a>
+    <a href="#projects" onclick="closeMenu()">Projects</a>
+    <a href="#experience" onclick="closeMenu()">About</a>
+    <a href="#contact" onclick="closeMenu()">Contact</a>
+  </div>
+
+  <!-- HERO -->
+  <section id="home">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-glow"></div>
+    <div class="container hero-content">
+      <div class="hero-tag">Sustainable Design Engineering</div>
+      <h1><span class="accent-name">Ahmed Amr</span><br />— Sustainable Engineer &amp;<br />Mechatronics.</h1>
+      <p class="hero-desc">
+        Undergraduate engineer passionate about designing sustainable, hands-on solutions — from smart machines to hydroponic systems and beyond.
+      </p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn-primary">View Projects ↓</a>
+        <a href="#contact" class="btn-ghost">Get in touch</a>
+      </div>
+      <div class="skills-ticker">
+        <span class="skill-pill">SolidWorks</span>
+        <span class="skill-pill">Arduino</span>
+        <span class="skill-pill">Numpy</span>
+        <span class="skill-pill">Python</span>
+        <span class="skill-pill">AutoCAD</span>
+        <span class="skill-pill">Sustainability</span>
+        <span class="skill-pill">Prototyping</span>
+        <span class="skill-pill">Tinkercad</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-label">02 — Projects</div>
+      <h2>Selected Work</h2>
+      <p class="projects-intro reveal">A selection of engineering projects focused on sustainability, automation, and human-centered design.</p>
+
+      <div class="projects-grid">
+
+        <div class="project-card reveal">
+          <div class="project-number">PROJECT 01</div>
+          <div class="project-icon">🏋️</div>
+          <div class="project-title">Multifunctional Gym Machine</div>
+          <p class="project-desc">
+            Designed and built a compact gym machine capable of performing multiple resistance exercises. Focused on space efficiency, material sustainability, and ergonomic safety for home or small-gym use.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">Mechanical Design</span>
+            <span class="project-tag">SolidWorks</span>
+            <span class="project-tag">Prototyping</span>
+            <span class="project-tag">Ergonomics</span>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="project-number">PROJECT 02</div>
+          <div class="project-icon">🚗</div>
+          <div class="project-title">Arduino-Based Smart Car</div>
+          <p class="project-desc">
+            Engineered an autonomous smart car using Arduino microcontrollers, integrating ultrasonic sensors, IR modules, and motor drivers to enable obstacle avoidance and line-following capabilities.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">Arduino</span>
+            <span class="project-tag">Python</span>
+            <span class="project-tag">Sensors</span>
+            <span class="project-tag">Electronics</span>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="project-number">PROJECT 03</div>
+          <div class="project-icon">🌱</div>
+          <div class="project-title">Hydroponic Farming System</div>
+          <p class="project-desc">
+            Developed a low-cost, soil-free hydroponic system to grow crops using nutrient-rich water. Designed for minimal environmental impact, water conservation, and year-round crop yield in limited spaces.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">Sustainability</span>
+            <span class="project-tag">System Design</span>
+            <span class="project-tag">Agriculture Tech</span>
+            <span class="project-tag">Fabrication</span>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="project-number">PROJECT 04</div>
+          <div class="project-icon">⛵</div>
+          <div class="project-title">Mini Motor Boat</div>
+          <p class="project-desc">
+            Designed and assembled a functional mini motor boat, focusing on hull stability, motor efficiency, and waterproofing. Explored fluid dynamics principles and lightweight material selection.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">Prototyping</span>
+            <span class="project-tag">Electronics</span>
+            <span class="project-tag">Fabrication</span>
+            <span class="project-tag">Solidworks</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT / EXPERIENCE -->
+  <section id="experience">
+    <div class="container">
+      <div class="section-label">03 — About</div>
+      <h2>Background</h2>
+
+      <div class="experience-grid">
+        <div class="exp-block reveal">
+          <h3>Education</h3>
+          <div class="edu-item">
+            <strong>BSc Sustainable Design Engineering</strong>
+            <span>Undergraduate at University of Prince Edward Island · In Progress</span>
+          </div>
+          <div class="edu-item">
+            <strong>Secondary School</strong>
+        
+          </div>
+        </div>
+
+        <div class="exp-block reveal">
+          <h3>Interests</h3>
+          <ul class="info-list">
+            <li>Sustainable manufacturing &amp; green tech</li>
+            <li>Robotics &amp; embedded systems</li>
+            <li>Renewable energy solutions</li>
+            <li>Human-centered product design</li>
+          </ul>
+        </div>
+
+        <div class="exp-block reveal">
+          <h3>Languages</h3>
+          <ul class="info-list">
+            <li>Arabic — Native</li>
+            <li>English — Good</li>
+            <li>German — Beginner</li>
+            <li>French — Beginner</li>
+          </ul>
+        </div>
+
+        <div class="exp-block reveal">
+          <h3>Tools &amp; Skills</h3>
+          <div class="tech-cloud">
+            <span class="tech-tag">Arduino</span>
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">SolidWorks</span>
+            <span class="tech-tag">AutoCAD</span>
+            <span class="tech-tag">3D Printing</span>
+            <span class="tech-tag">Automation Basics</span>
+            <span class="tech-tag">Electronics</span>
+            <span class="tech-tag">Prototyping</span>
+            <span class="tech-tag">Product Development</span>
+            <span class="tech-tag">Sustainability</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-label" style="justify-content: center;">04 — Contact</div>
+      <h2>Say hello</h2>
+      <p class="contact-sub">
+        Feel free to reach out for opportunities, collaborations, or just to say hi.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:ahmadamro2000@gmail.com" class="btn-primary">ahmadamro2000@gmail.com</a>
+        <a href="http://linkedin.com/in/ahmed-yousseif-46b1633ab" target="_blank" rel="noopener" class="btn-ghost">LinkedIn →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Thanks for visiting! &nbsp;·&nbsp; Ahmed &copy; 2025</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    }
+    function closeMenu() {
+      document.getElementById('mobileMenu').classList.remove('open');
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
